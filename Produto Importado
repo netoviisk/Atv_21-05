@@ -1,0 +1,34 @@
+package entidades;
+
+public class ProdutoImportado extends Produto{
+	
+	private Double customsFee;
+
+	public ProdutoImportado(String nome, double preco, double customsFee) {
+		super(nome, preco);
+		this.customsFee = customsFee;
+	}
+
+	public Double getCustomsFee() {
+		return customsFee;
+	}
+
+	public void setCustomsFee(Double customsFee) {
+		this.customsFee = customsFee;
+	}
+	
+	public Double totalPrice() {
+		return getpreco() + customsFee;
+	}
+	
+	@Override
+	public String priceTag() {
+		return getnome() 
+				+ " $ " 
+				+ String.format("%.2f", totalPrice())
+				+ " (Customs fee: $ " 
+				+ String.format("%.2f", customsFee)
+				+ ")";
+	}
+}
+
