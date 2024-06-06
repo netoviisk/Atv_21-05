@@ -1,0 +1,33 @@
+package entidades;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class ProdutoUsado extends Produto {
+		
+		private LocalDate manufatura;
+
+		public ProdutoUsado(String nome, double preco, LocalDate manufatura) {
+			super(nome, preco);
+			this.manufatura = manufatura;
+		}
+
+		public LocalDate getManufactureDate() {
+			return manufatura;
+		}
+
+		public void setManufactureDate(LocalDate manufatura) {
+			this.manufatura = manufatura;
+		}
+		
+		@Override
+		public String priceTag() {
+			return getnome() 
+					+ " (used) $ " 
+					+ String.format("%.2f", getpreco())
+					+ " (Manufacture date: "
+					+ manufatura.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+					+ ")";
+		}
+	}
+
